@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">peopleCounter</string>
+    <string name="titleName">Contador de pessoas</string>
+    <string name="selecUnit">Selecione a unidade: </string>
+    <string name="numMaxPerson">Selecione o numero maximo de pessoas</string>
+    <string name="mensageNuberPerson">A capacidade maxima é:</string>
+
+    <string-array name="unidadesMercado">
+        <item>-- Selecione uma unidade --</item>
+        <item>-- São Pedro --</item>
+        <item>-- Novo Horizonte --</item>
+        <item>-- Santo Antonio --</item>
+        <item>-- Santa Luzia --</item>
+    </string-array>
+</resources>
