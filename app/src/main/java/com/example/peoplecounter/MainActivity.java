@@ -2,6 +2,7 @@ package com.example.peoplecounter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,11 +12,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
     int progressValue;
     String arraySpinnerValue;
+    Date data = new Date(System.currentTimeMillis());
 
 
 
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 maxPeapleText.setText( String.valueOf(i) );
                 progressValue = i;
 
+
+
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -59,19 +64,29 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        arraySpinnerValue = String.valueOf(spinnerContainer.getSelectedItem());
 
         buttonNextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(spinnerContainer.getSelectedItemPosition() != 0 && arraySpinnerValue != null && progressValue >= 1){
-                    Toast.makeText(MainActivity.this, "Deu", Toast.LENGTH_SHORT).show();
+                arraySpinnerValue = String.valueOf(spinnerContainer.getSelectedItem());
+
+                if(spinnerContainer.getSelectedItemPosition() != 0 && arraySpinnerValue != null && progressValue >= 1) {
+                    Toast.makeText(MainActivity.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, SecondActive.class);
+
+                    intent.putExtra("progressValue", progressValue);
+                    intent.putExtra("arraySpinnerValue",arraySpinnerValue);
+
+                    startActivity(intent);
+
                 }else {
                 Toast.makeText(MainActivity.this, "Verifique os campos, algo deu errado", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
+
+
 
 
 }
